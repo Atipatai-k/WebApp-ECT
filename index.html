@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +9,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webboard</title>
+    
 </head>
 <body>
+    
     <h1>Webboard Atipatai</h1>
     <hr>
-    <form> หมวดหมู่ : 
+    <form action="post.php" method="get"> 
+        หมวดหมู่ : 
         <select name="เลือก">
         <option value="-- ทั้งหมด --">-- ทั้งหมด --</option>
         <option value="เรื่องทั่วไป">เรื่องทั่วไป</option>
         <option value="เรื่องเรียน">เรื่องเรียน</option>
         </select>
     <p style="float:right"><a href= "login.html">เข้าสู่ระบบ</a></p>
-    </form><br>
+    <br><br>
     <ul>
-        <li><a href= "#">กระทู้ที่1</a></li>
-        <li><a href= "#">กระทู้ที่2</a></li>
-        <li><a href= "#">กระทู้ที่3</a></li>
-        <li><a href= "#">กระทู้ที่4</a></li>
-        <li><a href= "#">กระทู้ที่5</a></li>
+        <li><a href="post.php?post=1">กระทู้ที่1</a></li>
+        <li><a href="post.php?post=2">กระทู้ที่2</a></li>
+        <li><a href="post.php?post=3">กระทู้ที่3</a></li>
+        <li><a href="post.php?post=4">กระทู้ที่4</a></li>
+        <li><a href="post.php?post=5">กระทู้ที่5</a></li>
     </ul>
+</form>
 </body>
 </html>
+
