@@ -4,6 +4,9 @@
 <head>
     <style>
         h1 {text-align: center;}
+        ul {
+        margin: auto;
+    }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,13 +27,17 @@
         </select>
     <p style="float:right"><a href= "login.html">เข้าสู่ระบบ</a></p>
     <br><br>
-    <ul>
-        <li><a href="post.php?post=1">กระทู้ที่1</a></li>
-        <li><a href="post.php?post=2">กระทู้ที่2</a></li>
-        <li><a href="post.php?post=3">กระทู้ที่3</a></li>
-        <li><a href="post.php?post=4">กระทู้ที่4</a></li>
-        <li><a href="post.php?post=5">กระทู้ที่5</a></li>
-    </ul>
+
+    <?php
+    
+    for($i=1 ;$i < 11;$i++){
+
+    echo '<ul><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . '</a></li></ul>'; 
+    
+    }
+
+    ?>
+
 </form>
 </body>
 </html>
