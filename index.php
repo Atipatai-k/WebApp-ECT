@@ -1,4 +1,7 @@
-
+<?php
+    session_start();
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,26 +21,53 @@
     
     <h1>Webboard Atipatai</h1>
     <hr>
-    <form action="post.php" method="get"> 
+    <form action="post.php" method="get">
         หมวดหมู่ : 
         <select name="เลือก">
         <option value="-- ทั้งหมด --">-- ทั้งหมด --</option>
         <option value="เรื่องทั่วไป">เรื่องทั่วไป</option>
         <option value="เรื่องเรียน">เรื่องเรียน</option>
-        </select>
-    <p style="float:right"><a href= "login.html">เข้าสู่ระบบ</a></p>
-    <br><br>
-
+        </select>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    
     <?php
-    
-    for($i=1 ;$i < 11;$i++){
-
-    echo '<ul><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . '</a></li></ul>'; 
-    
-    }
-
+        if(isset($_SESSION['id'])){
+        echo "ผู้ใช้งานระบบ : ",$_SESSION['username'];
+        }
     ?>
 
+    <?php
+    if(isset($_SESSION['username'])){
+        echo "<span style='float:right'><a href='logout.php'>ออกจากระบบ</a></span>";
+        }
+    else{
+        echo "<span style='float:right'><a href='login.php'>เข้าสู่ระบบ</a></span>";
+        }
+    ?>
+    <br>
+        <a href='newpost.php'>สร้างกระทู้ใหม่</a>
+    <br><br>
+    <ul><span>
+    <?php
+    if(isset($_SESSION['id'])){
+        if($_SESSION['role'] == 'a'){
+        for($i=1 ;$i < 11;$i++){
+            echo '<span><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . '
+            </a>&nbsp;&nbsp;<a href="delete.php?id=' . $i . '">ลบ</a></li></span>';  
+    }
+    }
+        elseif($_SESSION['role'] == 'm'){
+        for($i=1 ;$i < 11;$i++){
+            echo '<span><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . ' </a></li></span>';
+    }
+    }
+    }
+    else
+        for($i=1 ;$i < 11;$i++){
+        echo '<span><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . ' </a></li></span>';  
+    }
+    ?>
+    </span></ul>
 </form>
 </body>
 </html>

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +19,11 @@
     <title>Login</title>
 </head>
 <body>
+    <?php
+    if(isset($_SESSION['id'])){
+        header("Location: index.php");
+    }
+    ?>
     <h1>Webboard Atipatai<br></h1>
     <hr>
     <center>
@@ -29,9 +37,9 @@
         <tr align="center"><td>Password 
         <input type="password" name="pass"></td></tr>
         <tr><td align="center">
-        <input type="submit" value="Login"></td></tr>
+        <input type="submit" value="login"></td></tr>
     </form>
 </table></center>
-    <center><p>ถ้ายังไม่ได้เป็นสมาชิก &nbsp;<a href= "register.html">กรุณาสมัครสมาชิก</a></p></center>
+    <center><p>ถ้ายังไม่ได้เป็นสมาชิก &nbsp;<a href= "register.php">กรุณาสมัครสมาชิก</a></p></center>
 </body>
 </html>

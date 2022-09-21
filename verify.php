@@ -1,7 +1,13 @@
 <?php
+    session_start();
     $user = $_POST['user'];
     $password = $_POST['pass'];
 ?>
+    <?php
+    if(isset($_SESSION['id'])){
+        header("Location: index.php");
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,24 +22,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+    
 <body>
     <h1>Webboard Atipatai<br></h1>
     <hr>
 
 <?php
-
-    if($user == 'admin' && $password == 'ad1234')
+    
+    if($user == 'admin' && $password == 'ad1234'){
+        $_SESSION['username'] = 'admin';
+        $_SESSION['role'] = 'a';
+        $_SESSION['id'] = session_id();
     echo "<p align='center'>ยินดีต้อนรับคุณ ADMIN";
-
-    elseif($user == 'member' && $password == 'mem1234')
+    }
+    elseif($user == 'member' && $password == 'mem1234'){
+        $_SESSION['username'] = 'member';
+        $_SESSION['role'] = 'm';
+        $_SESSION['id'] = session_id();
     echo "<p align='center'>ยินดีต้อนรับคุณ MEMBER";
-
-    else
+    }
+    else{
     echo "<p align='center'>ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง";
-
+    }
 ?>
     <br><center>
-        <p><a href= "login.html">กลับไปหน้าหลัก</a></p>
+        <p><a href= "index.php">กลับไปหน้าหลัก</a></p>
     </center>
 </body>
 </html>
