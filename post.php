@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Post</title>
 </head>
 <body>
     <center><h1>Webboard Atipatai<br></h1></center>
@@ -22,7 +22,7 @@
 
 <?php
        
-    echo "<p align='center'>ต้องการดูกระทู้หมายเลข " . $_GET['id'];
+    echo "<p align='center'>ต้องการดูกระทู้หมายเลข $_GET[id]";
     
     $n = $_GET['id'];
     if(($n % 2) == 0)

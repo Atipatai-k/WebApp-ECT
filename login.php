@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(isset($_SESSION['id'])){
+        header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +22,6 @@
     <title>Login</title>
 </head>
 <body>
-    <?php
-    if(isset($_SESSION['id'])){
-        header("Location: index.php");
-    }
-    ?>
     <h1>Webboard Atipatai<br></h1>
     <hr>
     <center>
