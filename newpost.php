@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if($_SESSION['role'] != 'a' && $_SESSION['role'] != 'm'){
+        header("location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,31 +20,29 @@
     <title>Newpost</title>
 </head>
 <body>
-    <?php
-    if($_SESSION['username'] != 'admin' && $_SESSION['username'] != 'member'){
-        header("Location: index.php");
-    }
-    ?>
     <center><h1>Webboard Atipatai<br></h1></center>
     <hr>
+    <form>
+    <table>
     <p>
     <?php
         if(isset($_SESSION['id'])){
         echo " ผู้ใช้ : ",$_SESSION['username'];
         }
     ?>
-    <p>หมวดหมู่ : 
-        <select name="เลือก">
-        <option value="เรื่องทั่วไป">เรื่องทั่วไป</option>
-        <option value="-- ทั้งหมด --">-- ทั้งหมด --</option>
-        <option value="เรื่องเรียน">เรื่องเรียน</option>
-        </select></p>
-    <p>หัวข้อ : &emsp;  
-        <input type="text"></p>
-    <p>เนื้อหา :  &ensp;
-        <label for="message"></label>
-        <textarea id="message" name="message" rows="3" cols="22"></textarea></p>
-        <p>&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="submit" value="บันทึกข้อความ"></p>
-
+    </p>
+    <tr><td>หมวดหมู่ :
+        <select name="category">
+        <option value="general">เรื่องทั่วไป</option>
+        <option value="study">เรื่องเรียน</option>
+        </select></tr></td> 
+    <tr><td>หัวข้อ : &emsp;  
+        <input type="text"></tr></td> 
+    <tr><td>เนื้อหา :  &ensp;
+        <textarea rows="3" cols="22" ></textarea></p></tr></td> 
+    <tr><td>&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="submit" value="บันทึกข้อความ"></tr></td>
+    
+    </table>
+    </form>  
 </body>
 </html>
