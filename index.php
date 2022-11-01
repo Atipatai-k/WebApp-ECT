@@ -4,88 +4,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        h1 {text-align: center;}
-        ul {
-        margin: auto;
-    }
-    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 </head>
 
 <?php
     if(isset($_SESSION['id'])){
 ?>
-    <body>   
-    <h1>Webboard Atipatai</h1>
+    <body>
+        <div class="container"> 
+    <h1 style="text-align: center;">Webboard Atipatai</h1>
+    <?php include"nav.php"?>
     <hr>
     <form action="post.php" method="get">
-        หมวดหมู่ : 
-        <select name="เลือก">
-        <option value="-- ทั้งหมด --">-- ทั้งหมด --</option>
-        <option value="เรื่องทั่วไป">เรื่องทั่วไป</option>
-        <option value="เรื่องเรียน">เรื่องเรียน</option>
-        </select>
-
-    <?php
-    if(isset($_SESSION['username']))
-        echo "<span style='float:right'>ผู้ใช้งานระบบ : ",$_SESSION['username'] ;
-        echo "&nbsp&nbsp<a href='logout.php'>ออกจากระบบ</a></span>";
-    ?>
-    <br>
-        <a href='newpost.php'>สร้างกระทู้ใหม่</a>
-    <br><br>
-    <ul><span>
-    <?php
-    if(isset($_SESSION['id'])){
-        if($_SESSION['role'] == 'a'){
-        for($i=1 ;$i <= 10;$i++){
-            echo "<span><li><a href=post.php?id=$i>กระทู้ที่ $i</a>&nbsp;&nbsp;
-                            <a href=delete.php?id=$i>ลบ</a></li></span>";  
-        }
-    }
-        elseif($_SESSION['role'] == 'm'){
-        for($i=1 ;$i <= 10;$i++){
-            echo "<span><li><a href=post.php?id=$i>กระทู้ที่ $i</a></li></span>";
-        }
-    }
-    }
-    ?>
-    </span></ul>
+        <div class="d-flex justify-content-between">
+            <div>
+                <label>หมวดหมู่</label>
+                <span class="dropdown">
+                    <button class="btn btn-light dropdown-toggle btn-sm"
+                    type="button" id="dropdown2" data-bs-toggle="dropdown"
+                    aria-expanded="false">--ทั้งหมด--</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                        <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                        <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
+                        <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
+                    </ul>
+                </span>
+            </div>
+            <div><a href="newpost.php" class="btn btn-success btn-sm">
+                <i class="bi bi-plus"></i>สร้างกระทู้ใหม่</a></div>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <?php 
+                for($i=1;$i<=10;$i++){
+                    echo "<tr><td><a href=post.php?id=$i 
+                    style=text-decoration:none>กระทู้ที่ $i</a></td>";
+                    if($_SESSION["role"]=="a"){
+                        echo "<td><a href=delete.php?id=$i
+                        class='btn btn-danger btn-sm'>
+                        <i class='bi bi-trash'></i></a></td>";
+                    }
+                    echo "</tr>";
+                }
+            ?>
+    </table>
 </form>
+</div> 
 </body>
 
 <?php
-    }else{
+    } else{
 ?>
-    <body>   
-    <h1>Webboard Atipatai</h1>
+    <body>
+    <div class="container">   
+    <h1 style="text-align: center;">Webboard Atipatai</h1>
+
+    <?php include "nav.php";
+    ?>
     <hr>
     <form action="post.php" method="get">
-        หมวดหมู่ : 
-        <select name="เลือก">
-        <option value="-- ทั้งหมด --">-- ทั้งหมด --</option>
-        <option value="เรื่องทั่วไป">เรื่องทั่วไป</option>
-        <option value="เรื่องเรียน">เรื่องเรียน</option>
-        </select>
-
+        <div class="d-flex">
+            <div>
+                <label>หมวดหมู่</label>
+                <span class="dropdown">
+                    <button class="btn btn-light dropdown-toggle btn-sm"
+                    type="button" id="dropdown2" data-bs-toggle="dropdown"
+                    aria-expanded="false">--ทั้งหมด--</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                        <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                        <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
+                        <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <?php 
+                for($i=1;$i<=10;$i++){
+                    echo "<tr><td><a href=post.php?id=$i 
+                    style=text-decoration:none>กระทู้ที่ $i</a></td></tr>";
+                }
+            ?>
+        </table>
+            
     <?php
-        echo "<span style='float:right'><a href='login.php'>เข้าสู่ระบบ</a></span>";
-    ?>
-    <br>
-        <a href='newpost.php'>สร้างกระทู้ใหม่</a>
-    <br><br>
-    <ul><span>
-    <?php
-        for($i=1 ;$i <= 10;$i++){
-           echo '<span><li><a href="post.php?id=' . $i . '">กระทู้ที่ ' . $i . ' </a></li></span>';
-        }
     }
     ?>
-    </span></ul>
+
+</div>
 </form>
 </body>
 </html>

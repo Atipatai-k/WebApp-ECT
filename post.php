@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
     <style>
-        h1 {text-align: center;}
         p {
         margin: auto;
     }
@@ -17,7 +16,7 @@
     <title>Post</title>
 </head>
 <body>
-    <center><h1>Webboard Atipatai<br></h1></center>
+    <h1 style="text-align: center;">Webboard Atipatai</h1>
     <hr>
 
 <?php
